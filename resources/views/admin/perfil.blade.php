@@ -96,35 +96,31 @@
                 <tr>
                   <th>Descripción</th>
                   <th>Existencia en inventario</th>
+                  <th>Unidad de medida</th>
+                  <th>Larga duración</th>
                   <th>Cantidad a agregar</th>
                   <th>Grabar</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th>ETIQUETAS 4X2 10 HOJAS 100 ETIQ</th>
-                  <th>15</th>
-                  <th><input type="number" class="form-control form-control-sm add"></th>
-                  <th><button class="btn btn-success"> <i class="fa fa-save"></i> </button></th>
-                </tr>
-                <tr>
-                  <th>SOMETHING 10 HOJAS 100 ETIQ</th>
-                  <th>15</th>
-                  <th><input type="number" class="form-control form-control-sm add"></th>
-                  <th><button class="btn btn-success"> <i class="fa fa-save"></i> </button></th>
-                </tr>
-                <tr>
-                  <th>SOMETHING 10 HOJAS 100 ETIQ</th>
-                  <th>5</th>
-                  <th><input type="number" class="form-control form-control-sm add"></th>
-                  <th><button class="btn btn-success"> <i class="fa fa-save"></i> </button></th>
-                </tr>
-                <tr>
-                  <th>SOMETHING 10 HOJAS 100 ETIQ</th>
-                  <th>5</th>
-                  <th><input type="number" class="form-control form-control-sm add"></th>
-                  <th><button class="btn btn-success"> <i class="fa fa-save"></i> </button></th>
-                </tr>
+
+                @forelse ($todo as $todoItem)
+                    <tr>
+                      <th>{{$todoItem->descripcion}}</th>
+                      <th>{{$todoItem->cantidad}}</th>
+                      <th>{{$todoItem->unidad}}</th>
+                      <th>{{$todoItem->duradero}}</th>
+                      <form action="{{route('articulo.agregar', $todoItem->id)}}" method="POST">
+                        @csrf @method('PATCH')
+                        <th><input type="number" min="1" name="cantidad" class="form-control form-control-sm add"></th>
+                        <th><button class="btn btn-success"> <i class="fa fa-save"></i> </button></th>
+                      </form>
+                    </tr>
+                    
+                @empty
+                    <li>Nada que en la BD</li>
+                @endforelse
+            
               </tbody>
             </table>
   
