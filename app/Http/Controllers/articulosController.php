@@ -35,12 +35,20 @@ class articulosController extends Controller
 
     public function agregar($id){
         
-        $cantidad = DB::table('articulos')->where('id', $id)->first();
+        //Se obtiene la cantidad del producto en cuestion seleccionado por el ID
+        $articulo = DB::table('articulos')->where('id', $id)->first();
         
-        $total = request('cantidad') + $cantidad;
-         
+        //Cantidad sumada de la obtenida por la vista y la obtenida de la BD
+        $total = request('cantidad') + $articulo->cantidad;
 
-         return $total ;
+        //Obtenemos el nombre del producto para pasarlo por la vista
+        
+        
+        
+
+        DB::table('articulos')->where('id', $id)->limit(1)->update(['cantidad' => $total]);
+
+         return back()->with('updated', "Se actualizo la cantidad de <b> $articulo->descripcion </b>");
         
     }
 

@@ -13,6 +13,13 @@
               {{session('agregar')}} <br>
             </div>
         @endif
+
+        @if (session('updated'))
+        <div class="alert alert-info p-2 text-center mt-5 p-4 shadow-sm">
+          <i class=" fa fa-check-square mx-2"></i>
+          {!!session('updated')!!} 
+        </div>
+        @endif
       </div>
       <div class="col-12">
         <div class="row mt-3">
@@ -91,7 +98,7 @@
 
 
 
-            <table class="table  table-hover text-start mt-2">
+            <table class="table  table-hover text-start mt-2 shadow">
               <thead class="bg-dark text-white">
                 <tr>
                   <th>Descripción</th>
