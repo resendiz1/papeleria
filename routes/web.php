@@ -15,6 +15,7 @@ Route::view('/perfil_usuario', 'usuario/perfil')->name('perfil_usuario');
 Route::view('/aprobando', 'admin.aprobando')->name('aprobando');
 Route::view('/reporte_departamento', 'admin.reporte_departamento')->name('reporte_departamento');
 Route::view('/reporte_general', 'admin.reporte_general')->name('reporte_general');
+Route::view('/pedido', 'admin.pedido')->name('pedido');
 
 
 
@@ -26,4 +27,4 @@ Route::patch('/perfil_admin/{id}', [articulosController::class, 'agregar'])->nam
 
 //Rutas que se van a utilizar para el los departamentos
 Route::get('/catalogo', [departamentoController::class, 'obtener_catalogo'])->name('catalogo');
-Route::post('/catalogo', [departamentoController::class, 'pedido'])->name('pedido');
+Route::post('/catalogo/lanzado', [departamentoController::class, 'catalogo'])->name('lanza_pedido');

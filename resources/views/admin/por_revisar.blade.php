@@ -17,7 +17,7 @@
 
     <div class="row justify-content-center mt-3">
         <div class="col-3 p-4 h4 shadow text-center m-2">
-            <a href="#">Pedido de Sistemas</a>
+            <a href="{{route('pedido')}}">Pedido de Sistemas</a>
         </div>
         <div class="col-3 p-4 h4 shadow text-center m-2">
             <a href="#">Pedido de Seguridad e Higiene</a>

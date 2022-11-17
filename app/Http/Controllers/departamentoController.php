@@ -17,7 +17,7 @@ class departamentoController extends Controller
     }
 
 
-    public function pedido(){
+    public function catalogo(){
 
       
         $iteraciones = count(request()->all());
@@ -26,19 +26,18 @@ class departamentoController extends Controller
             
             if(request('input'.$i)!=null || request('input'.$i)!=0){
                 
+                echo $i;
                 Pedido::create([
-                     'descripcion' => request('input'.$i),
-                     'cantidad' => request('input'.$i),
-                     'unidad' => request('input'.$i),
-                     'duradero' => request('input'.$i),
-                     'departamento' => request('input'.$i)
+                     'cantidad' => request('cantida'.$i),
+                     'descripcion' => request('descripcion'.$i),
+                     'unidad' => request('unidad'.$i),
+                     'duradero' => request('duradero'.$i),
+                     'departamento' => request('departamento'.$i)
                 ]);
 
                 echo 'Agregado'. $i;
             }
-            else{
 
-            }
 
 
           

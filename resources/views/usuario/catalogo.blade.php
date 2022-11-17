@@ -16,12 +16,24 @@
 </div>
   
 <div class="container-fluid fondo">  {{-- abbertura del div --}}
+
+
+{{-- El bloque de codigo que me va a ayudar a identificar cada input with a counter --}}
 @php
-$contador = 0;    
+  $descripcion = 0;
+  $cantidad = 0;
+  $unidad = 0;
+  $duradero = 0;
+  $departamento = 0;
+  $caracteristicas = 0;
 @endphp
+{{-- El bloque de codigo que me va a ayudar a identificar cada input with a counter --}}
+
+
+
 
 {{-- El form que me va ayudar a agregar lo que haya que agregar --}}
-<form action="{{route('pedido')}}" method="POST">
+<form action="{{route('lanza_pedido')}}" method="POST">
   @csrf
 
 <div class="row p-3 justify-content-center"> <!-- Formulario del pedido -->
@@ -29,15 +41,27 @@ $contador = 0;
     <div class="col-4 col-sm-4 col-md-2 col-lg-3 text-center bg-white p-4 shadow-sm border m-1 ">
       <div class="row">
         <div class="col-9 mt-3">
-          <label for=""> <b class="size_font"> {{$articulosItem->descripcion}} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est repud </b> </label>
+          <label for=""> <b class="size_font"> {{$articulosItem->descripcion}}  </b> </label>
         </div>
         <div class="col-3">
-          <input type="number" min="0"  class="form-control form-control-lg bg-white shadow-sm pedido" name="input{{$contador++}}">
+          <input type="number" min="0"  class="form-control form-control-lg bg-white shadow-sm pedido text-center" name="cantidad{{$cantidad++}}">
+          <input type="text" value="{{$articulosItem->descripcion}}" name="descripcion{{$descripcion++}}">
+          <input type="text" value="{{$articulosItem->unidad}}" name="unidad{{$unidad++}}">
+          <input type="text" value="{{$articulosItem->duradero}}" name="duradero{{$duradero++}}">
+          <input type="text" value="sistemas" name="departamento{{$departamento}}">
         </div>
         <div class="col-12 mt-2">
           <div class="collapse" id="a{{$articulosItem->id}}">
             <div class="form-floating">
-              <textarea class="form-control" placeholder="Describer las caracteristicas como tipo, color o tamaño" id="floatingTextarea2" style="height: 90px"></textarea>
+
+              <textarea 
+                  class="form-control" 
+                  placeholder="Describer las caracteristicas como tipo, color o tamaño" 
+                  name="caracteristicas{{$caracteristicas++}}" 
+                  id="floatingTextarea2" s
+                  tyle="height: 90px">
+              </textarea>
+
               <label for="floatingTextarea2">Caracteristicas (tamaño, color o tipo)</label>
             </div>
           </div>
