@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('unidad');
             $table->string('duradero');
             $table->string('departamento');
-            $table->string('caracteristicas');
+            $table->string('mes_anio');
+            $table->string('caracteristicas')->nullable();
             $table->string('aprobado')->nullable();
             $table->string('desaprobado')->nullable();
             $table->timestamps();

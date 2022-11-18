@@ -10,6 +10,9 @@
       <div class="col-12 bg-primary  text-center">
         <h2 class="text-white">Catalogo de pedidos</h2>
         <h3 class="text-white">sistemas</h3>
+        @if (session('enviado'))
+            <h4>{{session('enviado')}}</h4>
+        @endif
         <a href="{{route('perfil_usuario')}}" class="text-white">Regresar</a>
       </div>
     </div>
@@ -45,10 +48,11 @@
         </div>
         <div class="col-3">
           <input type="number" min="0"  class="form-control form-control-lg bg-white shadow-sm pedido text-center" name="cantidad{{$cantidad++}}">
-          <input type="text" value="{{$articulosItem->descripcion}}" name="descripcion{{$descripcion++}}">
-          <input type="text" value="{{$articulosItem->unidad}}" name="unidad{{$unidad++}}">
-          <input type="text" value="{{$articulosItem->duradero}}" name="duradero{{$duradero++}}">
-          <input type="text" value="sistemas" name="departamento{{$departamento}}">
+          <input type="hidden" value="{{$articulosItem->descripcion}}" name="descripcion{{$descripcion++}}">
+          <input type="hidden" value="{{$articulosItem->unidad}}" name="unidad{{$unidad++}}">
+          <input type="hidden" value="{{$articulosItem->duradero}}" name="duradero{{$duradero++}}">
+          <input type="hidden" value="Recursos Humanos" name="departamento{{$departamento++}}">
+        
         </div>
         <div class="col-12 mt-2">
           <div class="collapse" id="a{{$articulosItem->id}}">
