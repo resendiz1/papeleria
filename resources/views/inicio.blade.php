@@ -14,13 +14,19 @@
     <div class="row mt-5 justify-content-center">
         <div class="col-4 bg-white p-5 shadow-sm">
             <h3 class="text-center">Login</h3>
-            <form action="">
+            <form action="{{route('login')}}" method="POST">
+                @csrf
                 <div class="form-group mt-5">
-                    <label for="">Llave</label>
-                    <input type="file" accept=".resendiz" class="form-control">
+                    <label for="">Correo</label>
+                    <input type="mail" name="mail"  class="form-control">
                 </div>
                 <div class="form-group mt-5">
+                    <label for="">Contraseña</label>
+                    <input type="password" name="pass" class="form-control">
+                </div>
+                <div class="form-group mt-5 text-center">
                     <button class="btn btn-success">
+                        <i class=" fa fa-key mx-2"></i>
                         Entrar
                     </button>
                 </div>

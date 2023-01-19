@@ -10,17 +10,27 @@
       <div class="col-12 bg-primary  text-center">
         <h2 class="text-white">Catalogo de pedidos</h2>
         <h3 class="text-white">sistemas</h3>
-        @if (session('enviado'))
-            <h4>{{session('enviado')}}</h4>
-        @endif
         <a href="{{route('perfil_usuario')}}" class="text-white">Regresar</a>
       </div>
     </div>
 </div>
-  
+
+{{-- Notificación de que ya se envio el pedido --}}
+<div class="container">
+  @if (session('enviado'))
+  <div class="row justify-content-center mt-3">
+   <div class="col-3 text-center font-weight-bold">
+     <div class="alert alert-success shadow-sm p-1">
+       <i class="fa fa-check"></i>
+       {{session('enviado')}}
+     </div>
+   </div>
+  </div>
+ @endif
+</div>
+
+
 <div class="container-fluid fondo">  {{-- abbertura del div --}}
-
-
 {{-- El bloque de codigo que me va a ayudar a identificar cada input with a counter --}}
 @php
   $descripcion = 0;
@@ -47,10 +57,14 @@
           <label for=""> <b class="size_font"> {{$articulosItem->descripcion}}  </b> </label>
         </div>
         <div class="col-3">
-          <input type="number" min="0"  class="form-control form-control-lg bg-white shadow-sm pedido text-center" name="cantidad{{$cantidad++}}">
+          <input type="number" min="0" value="0" class="form-control form-control-lg bg-white shadow-sm pedido text-center" name="cantidad{{$cantidad++}}">
+
           <input type="hidden" value="{{$articulosItem->descripcion}}" name="descripcion{{$descripcion++}}">
+
           <input type="hidden" value="{{$articulosItem->unidad}}" name="unidad{{$unidad++}}">
+
           <input type="hidden" value="{{$articulosItem->duradero}}" name="duradero{{$duradero++}}">
+
           <input type="hidden" value="Recursos Humanos" name="departamento{{$departamento++}}">
         
         </div>
@@ -62,9 +76,8 @@
                   class="form-control" 
                   placeholder="Describer las caracteristicas como tipo, color o tamaño" 
                   name="caracteristicas{{$caracteristicas++}}" 
-                  id="floatingTextarea2" s
-                  tyle="height: 90px">
-              </textarea>
+                  id="floatingTextarea2" 
+                  tyle="height: 90px"></textarea>
 
               <label for="floatingTextarea2">Caracteristicas (tamaño, color o tipo)</label>
             </div>

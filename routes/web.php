@@ -31,3 +31,8 @@ Route::get('/pedido_departamento/{id}', [departamentoController::class, 'pedido_
 //Rutas que se van a utilizar para el los departamentos
 Route::get('/catalogo', [departamentoController::class, 'obtener_catalogo'])->name('catalogo');
 Route::post('/catalogo/lanzado', [departamentoController::class, 'catalogo'])->name('lanza_pedido');
+
+
+
+//Ritas del login
+Route::post('/', [departamentoController::class, 'login'])->name('login');
