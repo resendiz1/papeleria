@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-12 bg-primary  text-center">
         <h2 class="text-white">Catalogo de pedidos</h2>
-        <h3 class="text-white">sistemas</h3>
+        <h3 class="text-white">{{Auth::user()->departamento}}</h3>
         <a href="{{route('perfil_usuario')}}" class="text-white">Regresar</a>
       </div>
     </div>
@@ -65,7 +65,7 @@
 
           <input type="hidden" value="{{$articulosItem->duradero}}" name="duradero{{$duradero++}}">
 
-          <input type="hidden" value="Recursos Humanos" name="departamento{{$departamento++}}">
+          <input type="hidden" value="{{Auth::user()->departamento}}" name="departamento{{$departamento++}}">
         
         </div>
         <div class="col-12 mt-2">

@@ -24,16 +24,32 @@
               </thead>
               <tbody>
 
+                @php
+                  $descripcion = 0;
+                  $cantidad = 0;
+                  $aprobados = 0;
+                  $aprobado = 0;
+                  $desaprobado = 0;
+                @endphp
+
+
+      <form action="{{route('aprobados')}}" method="POST"> 
+        @csrf
+        
                 @forelse ($pedidos as $pedidosItem)
                   <!-- Esta un desmadre por los Radio Button -->
                         <tr>
                           <th>{{$pedidosItem->descripcion}}</th>
+                          <input type="hidden" name="descripción{{$descripcion++}}" value="{{$pedidosItem->descripcion}}">
+
                           <th>{{$pedidosItem->cantidad}}</th>
-                          <th> <input type="number" class="form-control form-control-sm " value="0" > </th>
-        
+                          <input type="hidden" value="{{$pedidosItem->cantidad}}" name="cantidad{{$cantidad++}}">
+
+                          <th> <input type="number"  name="aprobado{{$aprobado}}" class="form-control form-control-sm " value="0"></th>
+
                           <th>
                               <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                  <input class="form-check-input" type="radio" name="flexRadioDefault{{$aprobado++}}" id="flexRadioDefault1">
                                   <label class="form-check-label" for="flexRadioDefault1">
                                   </label>
                                 </div>
@@ -41,11 +57,12 @@
         
                           <th>
                               <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                  <input class="form-check-input" type="radio" name="flexRadioDefault{{$desaprobado++}}" id="flexRadioDefault1">
                                   <label class="form-check-label" for="flexRadioDefault1">
                                   </label>
                                 </div>
                           </th>
+
                         </tr>
                   <!-- Esta un desmadre por los Radio Button -->
                 @empty
@@ -63,6 +80,10 @@
                   Grabar
               </button>
            </div>
+
+
+
+      </form>
 
       </div>
 

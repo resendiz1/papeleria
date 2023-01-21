@@ -25,6 +25,7 @@ Route::post('/perfil_admin', [articulosController::class, 'crear'])->name('creat
 Route::patch('/perfil_admin/{id}', [articulosController::class, 'agregar'])->name('articulo.agregar');
 Route::get('/por_revisar', [departamentoController::class, 'departamentos'])->name('revisar');
 Route::get('/pedido_departamento/{id}', [departamentoController::class, 'pedido_departamento'])->name('departamento.pedido');
+Route::post('/pedido_departamento/aprobado', [departamentoController::class, 'aprobados'])->name('aprobados');
 
 
 
@@ -35,7 +36,7 @@ Route::post('/catalogo/lanzado', [departamentoController::class, 'catalogo'])->n
 
 
 //Ritas del login
-Route::post('/', [departamentoController::class, 'login'])->name('login');
+Route::post('/', [departamentoController::class, 'login_user'])->name('login');
 
 
 

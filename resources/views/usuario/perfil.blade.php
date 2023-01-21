@@ -5,7 +5,8 @@
 <div class="container-fluid">
   <div class="row">
       <div class="col-12 shadow-sm text-center p-3 bg-primary">
-          <h2 class="text-white">Perfil del departamento de Sistemas</h2>
+          <h2 class="text-white">Perfil del departamento de {{Auth::user()->departamento}}</h2>
+          <h4 class="text-white">{{Auth::user()->name}}</h4>
           <a href="{{route('catalogo')}}" class="text-white">Ir al catalogo para realizar pedido</a>
       </div>
   </div>

@@ -81,11 +81,12 @@ class departamentoController extends Controller
 
 
 
-    public function login(){
+    public function login_user(){
 
-        $credenciales = request()->only('password', 'email');
+        $credenciales = request()->only('email', 'password');
         
         if(Auth::attempt($credenciales)){
+            request()->session()->regenerate();
             return 'estas logeado';
         }
         else{
@@ -110,6 +111,11 @@ class departamentoController extends Controller
 
         return back()->with('creado', 'Usuario Creado');
 
+    }
+
+
+    public function aprobados(){
+        return request();
     }
 
 

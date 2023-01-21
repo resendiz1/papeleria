@@ -18,11 +18,11 @@
                 @csrf
                 <div class="form-group mt-5">
                     <label for="">Correo</label>
-                    <input type="mail" name="mail"  class="form-control">
+                    <input type="mail" name="email"  class="form-control">
                 </div>
                 <div class="form-group mt-5">
                     <label for="">Contraseña</label>
-                    <input type="password" name="pass" class="form-control">
+                    <input type="password" name="password" class="form-control">
                 </div>
                 <div class="form-group mt-5 text-center">
                     <button class="btn btn-success">
