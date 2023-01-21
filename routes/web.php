@@ -15,7 +15,7 @@ Route::view('/aprobando', 'admin.aprobando')->name('aprobando');
 Route::view('/reporte_departamento', 'admin.reporte_departamento')->name('reporte_departamento');
 Route::view('/reporte_general', 'admin.reporte_general')->name('reporte_general');
 Route::view('/pedido', 'admin.pedido')->name('pedido');
-
+Route::view('/registro_usuarios', 'admin.registro')->name('registro');
 // Route::view('/por_revisar', 'admin/por_revisar')->name('revisar');
 
 
@@ -36,3 +36,9 @@ Route::post('/catalogo/lanzado', [departamentoController::class, 'catalogo'])->n
 
 //Ritas del login
 Route::post('/', [departamentoController::class, 'login'])->name('login');
+
+
+
+
+//Ruta de la alta de los usuarios
+Route::post('/registro_usuarios', [departamentoController::class, 'registro_usuarios'])->name('alta_usuarios'); 

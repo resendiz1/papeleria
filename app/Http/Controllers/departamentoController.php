@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Pedido;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class departamentoController extends Controller
 {
@@ -66,32 +69,47 @@ class departamentoController extends Controller
 
     public function pedido_departamento($departamento){
 
-
          $mes_actual = date("m/y");
-
         //Consultar los pedidos por mes por departamento
          $pedidos = DB::select("SELECT*FROM pedidos WHERE departamento LIKE '$departamento' AND mes_anio LIKE '$mes_actual'");
 //         return $mes_pedido = DB::table('pedidos')->get('created_at')->where('departamento', 'sistemas');        
          return view('admin.pedido', compact('pedidos'));
-        
+
     }
+
+
 
 
 
     public function login(){
 
-        $credenciales = request()->only('pass', 'mail');
-
-
+        $credenciales = request()->only('password', 'email');
+        
         if(Auth::attempt($credenciales)){
             return 'estas logeado';
         }
-
         else{
             return 'no estas logeado';
         }
+    }
 
-        
+
+    public function registro_usuarios(){
+
+
+
+       //Falta validar datos
+        User::create([
+            'name' => request('nombre'),
+            'departamento' =>request('departamento'),
+            'email' => request('correo'),
+            'password' => bcrypt(request('correo')),
+            'planta' => request('planta')
+        ]);
+
+
+        return back()->with('creado', 'Usuario Creado');
+
     }
 
 
